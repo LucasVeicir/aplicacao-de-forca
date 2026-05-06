@@ -8,6 +8,8 @@ let right;
 let left;
 let topWall;
 let ball;
+let btn1;
+let btn2;
 
 function setup(){
     createCanvas(400,400);
@@ -24,6 +26,16 @@ function setup(){
     }
     ball = Bodies.circle(200,100,20,ballOptions);
     World.add(world,ball);
+
+    btn1 = createImg('right.png');
+    btn1.position(220,30);
+    btn1.size(50,50);
+    btn1.mouseClicked(hForce);
+
+    btn2 = createImg('up.png');
+    btn2.position(20,30);
+    btn2.size(50,50);
+    btn2.mouseClicked(vForce);
 }
 
 function draw(){
@@ -40,4 +52,8 @@ function draw(){
 
 function hForce(){
     Matter.Body.applyForce(ball,{x:0,y:0},{x:0.05,y:0});
+}
+
+function vForce(){
+    Matter.Body.applyForce(ball,{x:0,y:0},{x:0,y:-0.05});
 }
